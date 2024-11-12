@@ -4,22 +4,39 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0;
+  margin: 0;
 }
 
+.navbar-logo {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
 .navbar-logo a {
   font-size: 1.4em;
   margin-left: 10px;
   text-decoration: none;
   color: #fff;
+  font-weight: bold;
+  justify-content: center;
 }
 
-.navbar-menu {
-  list-style: none;
+.navbar-left,
+.navbar-right {
+  flex: 1;
   display: flex;
+  justify-content: flex-start;
 }
+
+.navbar-right {
+  justify-content: flex-end;
+  margin-right: 15px;
+}
+
 
 .navbar-menu li {
-  margin-left: 20px;
+  margin-left: -25px;
 }
 
 .navbar-menu a {
@@ -30,6 +47,11 @@
   transition: color 0.3s ease;
   background: left / 0% 100% no-repeat linear-gradient(white, white);
   transition: background-size 200ms;
+}
+
+.navbar-left a, .navbar-right a {
+  padding: 5px 10px;
+  transition: color 0.3s ease;
 }
 
 .navbar-menu a:hover {

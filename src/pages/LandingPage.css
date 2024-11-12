@@ -6,7 +6,7 @@ html, body {
 }
 .landing-page {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    color: #333;
+    color: black;
   }
   
 .hero-section {
@@ -167,13 +167,18 @@ html, body {
   }
   
   .testimonials-section {
+    background-image: url('/Users/tyleryang/dtiproject/spa.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     background-color: #f9f9f9;
-    padding: 80px 20px;
+    padding: 85px 50px;
     text-align: center;
   }
   
   .testimonials-section h2 {
     margin-bottom: 50px;
+    color: black
   }
   
   .testimonials-container {
@@ -197,10 +202,9 @@ html, body {
   
   .testimonial-card h4 {
     font-weight: normal;
-    color: #777;
+    color: black;
   }
   
-  /* Newsletter Section */
   .newsletter-section {
     padding: 80px 20px;
     text-align: center;

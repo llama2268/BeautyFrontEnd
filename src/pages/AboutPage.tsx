@@ -11,10 +11,12 @@ const AboutPage: React.FC = () => {
           Welcome to <strong>Celestique</strong>! We are committed to bringing you the best in beauty products and services.
         </p>
         <p>
-          Our mission is to empower individuals to express their unique beauty through our carefully curated selection of products.
+          Our mission is to empower individuals to express their unique beauty through our services of finding the perfect
+          stylist or salon to fit your needs perfectly.
         </p>
         <p>
-          With a passion for innovation and excellence, we strive to provide an unparalleled shopping experience.
+          With a passion for beauty, we strive to find the best match for a customers needs whether it comes to haircuts, nails,
+          and more
         </p>
       </section>
       <section className="team-section">
@@ -23,12 +25,10 @@ const AboutPage: React.FC = () => {
           <div className="team-member">
             <img src="https://via.placeholder.com/150" alt="Team Member 1" />
             <h3>Paul Hwang</h3>
-            <p>Founder & CEO</p>
           </div>
           <div className="team-member">
             <img src="https://via.placeholder.com/150" alt="Team Member 2" />
             <h3>Ian Urquhartt</h3>
-            <p>Chief Beauty Officer</p>
           </div>
         </div>
       </section>

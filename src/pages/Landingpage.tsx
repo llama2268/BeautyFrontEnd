@@ -71,19 +71,19 @@ const featuredProducts: Product[] = [
   {
     id: 1,
     name: 'Luxury Lipstick',
-    image: '/lipstick.png',
+    image: '/images/lipstick.jpg',
     price: 29.99,
   },
   {
     id: 2,
     name: 'Silky Foundation',
-    image:'/foundation.jpg',
+    image: '/images/foundation.jpg',
     price: 39.99,
   },
   {
     id: 3,
     name: 'Glow Highlighter',
-    image: '/glowhighlighter.jpg',
+    image: '/images/glowhighlighter.jpg',
     price: 24.99,
   },
 ];
