@@ -12,7 +12,7 @@ const LandingPage: React.FC = () => {
           <p className ="text-1">Discover the finest beauty products</p>
           <p className ="text-2">and services curated just for you</p>
           <Link to="/shop" className="cta-button-hero">
-            Shop Now
+            SHOP NOW
           </Link>
         </div>
       </section>
