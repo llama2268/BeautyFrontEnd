@@ -1,0 +1,271 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+.landing-page {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+  }
+  
+.hero-section {
+    background-image: url('/Users/tyleryang/dtiproject/ithacabeauty.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 220px 10px;
+    margin: 0;
+    color: #fff;
+    box-sizing: border-box;
+  }
+  
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero-content h1 {
+    position:relative;
+    font-size: 3.5em;
+    top: -120px;
+    left: 45px;
+    margin: 0;
+
+  }
+
+  .hero-content h2 {
+    position:relative;
+    font-size: 2.5em;
+    top: -110px;
+    left: 124px;
+    margin: 0;
+
+  }
+
+  .hero-content h1 span {
+    display:block;
+    margin-bottom:5px
+  }
+  
+  .hero-content .text-1 {
+    position: absolute;
+    top: 125px;
+    left: 50px;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+
+  .hero-content .text-2 {
+    position:absolute;
+    top: 155px;
+    left: 60px;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+  .cta-button-hero {
+    background: left / 0% 100% no-repeat
+      linear-gradient(white,white);
+      transition: background-size 200ms;
+    background-color: black;
+    position: absolute;
+    color: #fff;
+    padding: 20px 40px;
+    border: none;
+    text-decoration: none;
+    font-size: 1em;
+    cursor: pointer;
+    left: 160px;
+    top: 60px;
+    font-weight: bold
+  }
+  .cta-button-hero:hover {
+    background: left / 100% 100% no-repeat
+    linear-gradient(white,white);
+    transition: 0.6s;
+    color: black
+  }
+  
+  .cta-button {
+    background-color: #e31837;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    text-decoration: none;
+    font-size: 1em;
+    cursor: pointer;
+    background: left / 0% 100% no-repeat
+    linear-gradient(white,white);
+    transition: background-size 200ms;
+  }
+  
+  .cta-button:hover {
+    background: left / 100% 100% no-repeat
+    linear-gradient(white,white);
+    transition: 0.6s;
+    color: black
+    }
+  
+  .featured-section {
+    padding: 80px 20px;
+    text-align: center;
+  }
+  
+  .featured-section h2 {
+    margin-bottom: 50px;
+  }
+  
+  .products-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .product-card {
+    width: 300px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .product-card img {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .product-card h3 {
+    margin-bottom: 10px;
+  }
+  
+  .product-card .price {
+    color: #e31837;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .add-to-cart-button {
+    background-color: #e31837;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #000;
+  }
+  
+  .testimonials-section {
+    background-color: #f9f9f9;
+    padding: 80px 20px;
+    text-align: center;
+  }
+  
+  .testimonials-section h2 {
+    margin-bottom: 50px;
+  }
+  
+  .testimonials-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .testimonial-card {
+    width: 300px;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .testimonial-card p {
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  
+  .testimonial-card h4 {
+    font-weight: normal;
+    color: #777;
+  }
+  
+  /* Newsletter Section */
+  .newsletter-section {
+    padding: 80px 20px;
+    text-align: center;
+  }
+  
+  .newsletter-section h2 {
+    margin-bottom: 20px;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .newsletter-form input[type='email'] {
+    padding: 15px;
+    font-size: 1em;
+    width: 300px;
+    border: 1px solid #ddd;
+  }
+  
+  .newsletter-form button {
+    padding: 15px 30px;
+    font-size: 1em;
+    border: none;
+    background-color: #e31837;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .newsletter-form button:hover {
+    background-color: #000;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.5em;
+    }
+  
+    .hero-content p {
+      font-size: 1.2em;
+    }
+  
+    .products-container,
+    .testimonials-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .product-card,
+    .testimonial-card {
+      width: 100%;
+      max-width: 300px;
+    }
+  
+    .newsletter-form {
+      flex-direction: column;
+    }
+  
+    .newsletter-form input[type='email'],
+    .newsletter-form button {
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 10px;
+    }
+  }
+  

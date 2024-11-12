@@ -1,0 +1,39 @@
+.navbar {
+  background-color: #000;
+  padding: 8.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo a {
+  font-size: 1.4em;
+  margin-left: 10px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+}
+
+.navbar-menu li {
+  margin-left: 20px;
+}
+
+.navbar-menu a {
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+  background: left / 0% 100% no-repeat linear-gradient(white, white);
+  transition: background-size 200ms;
+}
+
+.navbar-menu a:hover {
+  background: left / 100% 100% no-repeat linear-gradient(white, white);
+  color: black;
+  transition: 0.6s;
+}
