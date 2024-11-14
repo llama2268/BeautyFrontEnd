@@ -1,8 +1,6 @@
-// src/pages/AboutPage.tsx
-import React from 'react';
 import './AboutPage.css';
 
-const AboutPage: React.FC = () => {
+const AboutPage = () => {
   return (
     <div className="about-page">
       <h1>About Us</h1>
@@ -23,11 +21,11 @@ const AboutPage: React.FC = () => {
         <h2>Meet Our Team</h2>
         <div className="team-grid">
           <div className="team-member">
-            <img src="https://via.placeholder.com/150" alt="Team Member 1" />
+            <img src="profile.jpg" alt="Team Member 1" />
             <h3>Paul Hwang</h3>
           </div>
           <div className="team-member">
-            <img src="https://via.placeholder.com/150" alt="Team Member 2" />
+            <img src="profile.jpg" alt="Team Member 2" />
             <h3>Ian Urquhartt</h3>
           </div>
         </div>

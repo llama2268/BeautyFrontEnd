@@ -6,13 +6,13 @@ const Footer: React.FC = () => {
     <footer className="footer">
       <p>&copy; 2024 Ithaca's Beauty. All rights reserved.</p>
       <div className="social-media">
-        <a href="#" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.meta.com/" target="_blank" rel="noopener noreferrer">
           Facebook
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
           Instagram
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer">
+        <a href="https://x.com/" target="_blank" rel="noopener noreferrer">
           Twitter
         </a>
       </div>

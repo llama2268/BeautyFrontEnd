@@ -30,7 +30,7 @@
   
   .contact-form button {
     background-color: #e31837;
-    color: #fff;
+    color: white;
     padding: 15px 30px;
     border: none;
     cursor: pointer;
@@ -38,6 +38,6 @@
   }
   
   .contact-form button:hover {
-    background-color: #000;
+    background-color: black;
   }
   

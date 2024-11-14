@@ -1,55 +1,53 @@
-// src/pages/ContactPage.tsx
 import React, { useState } from 'react';
 import './ContactPage.css';
 
-interface FormState {
+interface Info {
   name: string;
   email: string;
   message: string;
 }
 
-const ContactPage: React.FC = () => {
-  const [formState, setFormState] = useState<FormState>({
+const ContactPage = () => {
+  const [currInfo, setInfo] = useState<Info>({
     name: '',
     email: '',
     message: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    if (name === "name") {
+      setInfo({ name: value, email: currInfo.email, message: currInfo.message });
+    } else if (name === "email") {
+      setInfo({ name: currInfo.name, email: value, message: currInfo.message });
+    } else if (name === "message") {
+      setInfo({ name: currInfo.name, email: currInfo.email, message: value });
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission logic
-    console.log('Form submitted:', formState);
-  };
 
-  return (
-    <div className="contact-page">
+return (
+  <div className="contact-page">
       <h1>Contact Us</h1>
-      <form className="contact-form" onSubmit={handleSubmit}>
+      <form className="contact-form">
         <label>
           Name:
-          <input type="text" name="name" value={formState.name} onChange={handleChange} required />
+          <input type="text" name="name" value={currInfo.name} onChange={handleChange} required />
         </label>
 
         <label>
           Email:
-          <input type="email" name="email" value={formState.email} onChange={handleChange} required />
+          <input type="email" name="email" value={currInfo.email} onChange={handleChange} required />
         </label>
 
         <label>
           Message:
-          <textarea name="message" rows={5} value={formState.message} onChange={handleChange} required />
+          <textarea name="message" rows={5} value={currInfo.message} onChange={handleChange} required />
         </label>
 
         <button type="submit">Send Message</button>
       </form>
-    </div>
+  </div>
   );
 };
 

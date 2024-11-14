@@ -16,7 +16,7 @@ html, body {
     position: relative;
     padding: 220px 10px;
     margin: 0;
-    color: #fff;
+    color: white;
     box-sizing: border-box;
   }
   
@@ -79,7 +79,7 @@ html, body {
       transition: background-size 200ms;
     background-color: black;
     position: absolute;
-    color: #fff;
+    color: white;
     padding: 20px 40px;
     border: none;
     text-decoration: none;
@@ -98,7 +98,7 @@ html, body {
   
   .cta-button {
     background-color: #e31837;
-    color: #fff;
+    color: white;
     padding: 15px 30px;
     border: none;
     text-decoration: none;
@@ -156,14 +156,14 @@ html, body {
   
   .add-to-cart-button {
     background-color: #e31837;
-    color: #fff;
+    color: white;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
   }
   
   .add-to-cart-button:hover {
-    background-color: #000;
+    background-color: black;
   }
   
   .testimonials-section {
@@ -190,7 +190,7 @@ html, body {
   
   .testimonial-card {
     width: 300px;
-    background-color: #fff;
+    background-color: white;
     padding: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
@@ -232,12 +232,12 @@ html, body {
     font-size: 1em;
     border: none;
     background-color: #e31837;
-    color: #fff;
+    color: white;
     cursor: pointer;
   }
   
   .newsletter-form button:hover {
-    background-color: #000;
+    background-color: black;
   }
   
   @media (max-width: 768px) {
