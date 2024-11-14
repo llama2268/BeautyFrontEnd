@@ -12,7 +12,7 @@ const AccountPage = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users/1')
+    fetch('http://localhost:5000/users/1')
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch user data');
         return res.json();
@@ -22,6 +22,7 @@ const AccountPage = () => {
         setLoading(false);
       })
       .catch((err) => {
+        console.error('Failed to fetch data',err.message)
         setError(err.message);
         setLoading(false);
       });
