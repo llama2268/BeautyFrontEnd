@@ -1,0 +1,12 @@
+Hey, the zip is way too big and I dont know what how to submit the whole thing without
+deleting some files or images.
+
+Here is the github link to the repo, if that doesn't work I'll try to figure the zipping
+stuff:
+https://github.com/llama2268/BeautyFrontEnd
+
+For our project to start the front end we start in dtiproject directory and
+run: npm start
+
+Then for running our backend server we go to the backend directory
+and run: npm start

@@ -1,8 +1,11 @@
-import express, { Request, Response } from 'express';
+const express = require('express');
+import { Request, Response } from 'express';
+import cors from 'cors';
 import { db } from './firebase';
 const app = express();
 const PORT = 5000;
 
+app.use(cors({ origin: 'http://localhost:3000' }));
 app.use(express.json());
 
 //Outline for the routes for now
