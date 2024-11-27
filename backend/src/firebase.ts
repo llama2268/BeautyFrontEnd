@@ -7,5 +7,6 @@ const app = initializeApp({
     credential: cert(serviceAccount),
   });
   const db = getFirestore();
+
   
 export { db };

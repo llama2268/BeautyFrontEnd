@@ -10,7 +10,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "react-with-firebase-auth": "^1.4.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",

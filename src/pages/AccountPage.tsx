@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './AccountPage.css';
+import { auth, googleProvider } from "./firebaseClient";
+import {signInWithPopup } from "firebase/auth";
 
 type UserData = {
   username: string;
@@ -10,9 +12,11 @@ const AccountPage = () => {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [googleUser, setGoogleUser] = useState<UserData | null>(null);
+
 
   useEffect(() => {
-    fetch('http://localhost:5000/users/1')
+    fetch('http://localhost:5000/users/2')
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch user data');
         return res.json();
@@ -27,6 +31,25 @@ const AccountPage = () => {
         setLoading(false);
       });
   }, []);
+
+  const handleGoogleLogin = async () => {
+    setLoading(true);
+
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      setGoogleUser({
+        username: user.displayName || "Google User",
+        email: user.email || "No Email",
+      });
+      setError(null);
+    } catch (error) {
+      console.error("Error during Google Sign-In:", error);
+      setError("Failed to sign in with Google");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="signin-container">
@@ -49,6 +72,16 @@ const AccountPage = () => {
         <p className="signin-footer">
           Don’t have an account? <a href="/signup" className="signin-link">Sign up</a>
         </p>
+      </div>
+      <div className="google-signin-box">
+        <h3>Or Sign In with Google</h3>
+        {googleUser ? (
+          <p>Welcome, {googleUser.username}</p>
+        ) : (
+          <button onClick={handleGoogleLogin} className="google-button">
+            {loading ? "Loading..." : "Sign In with Google"}
+          </button>
+        )}
       </div>
     </div>
   );
