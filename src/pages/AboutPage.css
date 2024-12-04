@@ -14,4 +14,12 @@
     line-height: 1.6;
     font-size: 1.1em;
   }
+
+  .team-member img {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 10px;
+  }
   

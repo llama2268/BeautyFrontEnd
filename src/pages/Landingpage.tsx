@@ -1,15 +1,37 @@
-import { Link } from 'react-router-dom';
-import './LandingPage.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Product } from "../App";
+import "./LandingPage.css";
 
-const LandingPage = () => {
+interface LandingPageProps {
+  cartItems: Product[];
+  setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
+}
+
+const LandingPage: React.FC<LandingPageProps> = ({ cartItems, setCartItems }) => {
+  const addToCart = (product: Product) => {
+    setCartItems((prevItems) => [
+      ...prevItems,
+      { ...product, cartItemId: new Date().getTime() },
+    ]);    console.log("Added to cart:", product);
+  };
+
   return (
     <div className="landing-page">
+      <header className="cart-header">
+        <Link to="/checkout" className="cart-icon-link">
+          <div className="cart-icon" title="View Cart">
+            <img src="/cart.svg" alt="Shopping Cart" />
+            <div className="cart-count">{cartItems.length}</div>
+          </div>
+        </Link>
+      </header>
+
       <section className="hero-section">
         <div className="hero-content">
           <h1>Ithaca's Beauty</h1>
           <h2>Our Passion</h2>
-          <p className ="text-1">Discover the finest beauty products</p>
-          <p className ="text-2">and services curated just for you</p>
+          <p>Discover the finest beauty products and services curated just for you.</p>
           <Link to="/shop" className="cta-button-hero">
             SHOP NOW
           </Link>
@@ -24,7 +46,12 @@ const LandingPage = () => {
               <img src={product.image} alt={product.name} />
               <h3>{product.name}</h3>
               <p className="price">${product.price.toFixed(2)}</p>
-              <button className="add-to-cart-button">Add to Cart</button>
+              <button
+                className="add-to-cart-button"
+                onClick={() => addToCart(product)}
+              >
+                Add to Cart
+              </button>
             </div>
           ))}
         </div>
@@ -59,34 +86,6 @@ const LandingPage = () => {
   );
 };
 
-interface Product {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-}
-
-const featuredProducts: Product[] = [
-  {
-    id: 1,
-    name: 'Luxury Lipstick',
-    image: '/images/lipstick.jpg',
-    price: 29.99,
-  },
-  {
-    id: 2,
-    name: 'Silky Foundation',
-    image: '/images/foundation.jpg',
-    price: 39.99,
-  },
-  {
-    id: 3,
-    name: 'Glow Highlighter',
-    image: '/images/glowhighlighter.jpg',
-    price: 24.99,
-  },
-];
-
 interface Testimonial {
   id: number;
   name: string;
@@ -108,6 +107,28 @@ const testimonials: Testimonial[] = [
     id: 3,
     name: 'Kaelem B.',
     message: "I love how the stylists are always taking a client's input",
+  },
+];
+
+
+const featuredProducts: Product[] = [
+  {
+    id: 1,
+    name: "Luxury Lipstick",
+    image: "/images/lipstick.jpg",
+    price: 29.99,
+  },
+  {
+    id: 2,
+    name: "Silky Foundation",
+    image: "/images/foundation.jpg",
+    price: 39.99,
+  },
+  {
+    id: 3,
+    name: "Glow Highlighter",
+    image: "/images/glowhighlighter.jpg",
+    price: 24.99,
   },
 ];
 

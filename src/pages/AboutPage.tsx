@@ -26,7 +26,7 @@ const AboutPage = () => {
           </div>
           <div className="team-member">
             <img src="profile.jpg" alt="Team Member 2" />
-            <h3>Ian Urquhartt</h3>
+            <h3>Ian Urquhart</h3>
           </div>
         </div>
       </section>
