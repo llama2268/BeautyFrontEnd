@@ -1,4 +1,4 @@
-import React from "react";
+import { useState} from "react";
 import { Link } from "react-router-dom";
 import { Product, CartItem } from "../App";
 import "./LandingPage.css";
@@ -10,6 +10,33 @@ interface LandingPageProps {
 
 function LandingPage(props: LandingPageProps) {
   const { cartItems, setCartItems } = props;
+  const [email, setEmail] = useState("");
+  const [subscriptionMessage, setSubscriptionMessage] = useState<string | null>(null);
+
+  const handleSubscription = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setSubscriptionMessage("Thank you for subscribing!");
+        setEmail("");
+      } else {
+        const errorData = await response.json();
+        setSubscriptionMessage(`Subscription failed: ${errorData.message}`);
+      }
+    } catch (error) {
+      console.error("Error subscribing:", error);
+      setSubscriptionMessage("An error occurred. Please try again later.");
+    }
+  }
 
   const addToCart = (product: Product) => {
     setCartItems((prevItems) => {
@@ -43,7 +70,8 @@ function LandingPage(props: LandingPageProps) {
         <div className="hero-content">
           <h1>Ithaca's Beauty</h1>
           <h2>Our Passion</h2>
-          <p>Discover the finest beauty products and services curated just for you.</p>
+          <p>Discover the finest beauty products and</p>
+          <p>services curated just for you.</p>
           <Link to="/shop" className="cta-button-hero">
             SHOP NOW
           </Link>
@@ -84,15 +112,18 @@ function LandingPage(props: LandingPageProps) {
       <section className="newsletter-section">
         <h2>Stay Updated</h2>
         <p>Subscribe to our newsletter for the latest updates and offers.</p>
-        <form className="newsletter-form">
+        <form className="newsletter-form" onSubmit={handleSubscription}>
           <input
             type="email"
             placeholder="Enter your email"
             aria-label="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <button type="submit">Subscribe</button>
         </form>
+        {subscriptionMessage && <p className="subscription-message">{subscriptionMessage}</p>}
       </section>
     </div>
   );

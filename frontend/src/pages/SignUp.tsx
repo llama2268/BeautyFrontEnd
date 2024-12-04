@@ -13,20 +13,13 @@ const SignUp = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-  
-    setFormData((prevFormData) => {
-      const updatedFormData = { 
-        username: prevFormData.username, 
-        email: prevFormData.email, 
-        password: prevFormData.password, 
-        confirmPassword: prevFormData.confirmPassword 
-      };
-      updatedFormData[name as keyof typeof updatedFormData] = value;
-      return updatedFormData;
-    });
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
@@ -34,8 +27,35 @@ const SignUp = () => {
       return;
     }
 
-    console.log("User registered:", formData);
-    setError(null);
+    try {
+      const userData = {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+      };
+
+      const response = await fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+
+      const data = await response.json();
+
+      if (response.status === 201) {
+        console.log("User created:", data);
+        alert("User registered successfully!");
+        setError(null);
+        setFormData({ username: "", email: "", password: "", confirmPassword: "" });
+      } else {
+        setError(data.message || "Failed to register user.");
+      }
+    } catch (err) {
+      console.error("Error during registration", err);
+      setError("Failed to register user. Please try again.");
+    }
   };
 
   return (

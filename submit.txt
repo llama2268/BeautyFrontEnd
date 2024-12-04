@@ -1,5 +1,5 @@
 Finished backend implementation for the GET, POST, PUT, and DELETE route. 
-Didn't do authentication sorry.
+Google authentication for the login page
 
 Here is the github link to the repo:
 https://github.com/llama2268/BeautyFrontEnd

@@ -8,12 +8,14 @@
     "start": "ts-node src/server.ts"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "path": "^0.12.7",
     "react-with-firebase-auth": "^1.4.1"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.3",
     "@types/node": "^16.11.7",
