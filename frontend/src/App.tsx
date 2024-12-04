@@ -30,7 +30,8 @@ export interface CartItem extends Product {
 
 const App = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [user, setUser] = useState<boolean>(false);
+  const [user, setUser] = useState<boolean | null>(null);
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -43,9 +44,13 @@ const App = () => {
     setCartItems((prevItems) => prevItems.filter((item) => item.cartItemId !== cartItemId));
   };  
 
+  if (user === null) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Router>
-      <Navbar />
+      <Navbar user={user}/>
       <Routes>
         <Route path="/about" element={<AboutPage />} />
         <Route path="/signup" element={<SignUp/>} />
