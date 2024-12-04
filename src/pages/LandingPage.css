@@ -10,7 +10,7 @@ html, body {
   }
   
 .hero-section {
-    background-image: url('/Users/tyleryang/dtiproject/ithacabeauty.jpg');
+    background-image: url('/ithacabeauty.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -167,7 +167,7 @@ html, body {
   }
   
   .testimonials-section {
-    background-image: url('/Users/tyleryang/dtiproject/spa.png');
+    background-image: url('/spa.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
