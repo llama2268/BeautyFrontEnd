@@ -22,7 +22,7 @@ const AboutPage = () => {
         <div className="team-grid">
           <div className="team-member">
             <img src="profile.jpg" alt="Team Member 1" />
-            <h3>Paul Hwang</h3>
+            <h3>Tyler Yang</h3>
           </div>
           <div className="team-member">
             <img src="profile.jpg" alt="Team Member 2" />

@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './AccountPage.css';
 import { auth, googleProvider } from "./firebaseClient";
 import {signInWithPopup } from "firebase/auth";
+import { Link } from 'react-router-dom';
 
 type UserData = {
   username: string;
@@ -9,28 +10,10 @@ type UserData = {
 };
 
 const AccountPage = () => {
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const [userData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [googleUser, setGoogleUser] = useState<UserData | null>(null);
-
-
-  useEffect(() => {
-    fetch('http://localhost:5000/users/2')
-      .then((res) => {
-        if (!res.ok) throw new Error('Failed to fetch user data');
-        return res.json();
-      })
-      .then((data) => {
-        setUserData({ username: data.username, email: data.email });
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error('Failed to fetch data',err.message)
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
 
   const handleGoogleLogin = async () => {
     setLoading(true);
@@ -55,7 +38,7 @@ const AccountPage = () => {
     <div className="signin-container">
       <div className="signin-box">
         <h2 className="signin-title">
-          {loading ? 'Loading...' : error ? `Error: ${error}` : `Welcome, ${userData?.username}!`}
+          Log In
         </h2>
         <p className="signin-subtitle">
           {loading || error ? '' : `Email: ${userData?.email}`}
@@ -73,16 +56,20 @@ const AccountPage = () => {
           Don’t have an account? <a href="/signup" className="signin-link">Sign up</a>
         </p>
       </div>
-      <div className="google-signin-box">
+     <div className="google-signin-box">
         <h3>Or Sign In with Google</h3>
         {googleUser ? (
           <p>Welcome, {googleUser.username}</p>
         ) : (
+          <Link to = "/">
           <button onClick={handleGoogleLogin} className="google-button">
             {loading ? "Loading..." : "Sign In with Google"}
           </button>
+          </Link>
         )}
+
       </div>
+
     </div>
   );
 };

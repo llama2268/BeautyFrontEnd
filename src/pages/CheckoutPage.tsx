@@ -1,14 +1,16 @@
 import React from "react";
-import { Product } from "../App";
+import { CartItem } from "../App";
+
 import { Link } from "react-router-dom";
 import "./CheckoutPage.css";
 
 interface Props {
-  cartItems: Product[];
+  cartItems: CartItem[];
   removeFromCart: (productId: number) => void;
 }
 
-const CheckoutPage: React.FC<Props> = ({ cartItems, removeFromCart }) => {
+const CheckoutPage = (props: Props) => {
+  const { cartItems, removeFromCart } = props;
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0);
 
   return (

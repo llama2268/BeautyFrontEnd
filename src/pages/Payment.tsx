@@ -17,7 +17,28 @@ const PaymentPage = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setPaymentInfo((prev) => ({ ...prev, [name]: value }));
+
+    setPaymentInfo((prevPaymentInfo) => {
+      const updatedPaymentInfo = {
+        cardNumber: prevPaymentInfo.cardNumber,
+        expiryDate: prevPaymentInfo.expiryDate,
+        cvv: prevPaymentInfo.cvv,
+        name: prevPaymentInfo.name,
+        address: prevPaymentInfo.address,
+        city: prevPaymentInfo.city,
+        postalCode: prevPaymentInfo.postalCode,
+        country: prevPaymentInfo.country,
+      };
+      if (name === "cardNumber") updatedPaymentInfo.cardNumber = value;
+      else if (name === "expiryDate") updatedPaymentInfo.expiryDate = value;
+      else if (name === "cvv") updatedPaymentInfo.cvv = value;
+      else if (name === "name") updatedPaymentInfo.name = value;
+      else if (name === "address") updatedPaymentInfo.address = value;
+      else if (name === "city") updatedPaymentInfo.city = value;
+      else if (name === "postalCode") updatedPaymentInfo.postalCode = value;
+      else if (name === "country") updatedPaymentInfo.country = value;  
+      return updatedPaymentInfo;
+    });
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

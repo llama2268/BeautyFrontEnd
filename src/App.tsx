@@ -12,6 +12,7 @@ import BookingPage from './pages/BookingPage';
 import CheckoutPage from './pages/CheckoutPage';
 import PaymentPage from './pages/Payment';
 import ProtectedRoute from './component/ProtectedRoute';
+import SignUp from "./pages/SignUp"
 import './App.css';
 
 
@@ -20,10 +21,15 @@ export interface Product {
   name: string;
   image: string;
   price: number;
+  cartItemId?: number;
+
+}
+export interface CartItem extends Product {
+  cartItemId: number;
 }
 
-const App: React.FC = () => {
-  const [cartItems, setCartItems] = useState<Product[]>([]);
+const App = () => {
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [user, setUser] = useState<boolean>(false);
 
   useEffect(() => {
@@ -42,12 +48,14 @@ const App: React.FC = () => {
       <Navbar />
       <Routes>
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/signup" element={<SignUp/>} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="/" element={<ProtectedRoute user={user}><LandingPage cartItems={cartItems} setCartItems={setCartItems} /></ProtectedRoute>}/>
         <Route path="/book" element={<ProtectedRoute user={user}><BookingPage /></ProtectedRoute>}/>
         <Route path="/checkout" element={<ProtectedRoute user={user}><CheckoutPage cartItems={cartItems} removeFromCart={removeFromCart}/></ProtectedRoute>}/>
         <Route path="/pay" element={<ProtectedRoute user={user}><PaymentPage/></ProtectedRoute>}/>
+
 
 
       </Routes>

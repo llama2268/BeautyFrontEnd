@@ -1,20 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Product } from "../App";
+import { Product, CartItem } from "../App";
 import "./LandingPage.css";
 
 interface LandingPageProps {
-  cartItems: Product[];
-  setCartItems: React.Dispatch<React.SetStateAction<Product[]>>;
+  cartItems: CartItem[];
+  setCartItems: (newCart: CartItem[] | ((prevCart: CartItem[]) => CartItem[])) => void;
 }
 
-const LandingPage: React.FC<LandingPageProps> = ({ cartItems, setCartItems }) => {
+function LandingPage(props: LandingPageProps) {
+  const { cartItems, setCartItems } = props;
+
   const addToCart = (product: Product) => {
-    setCartItems((prevItems) => [
-      ...prevItems,
-      { ...product, cartItemId: new Date().getTime() },
-    ]);    console.log("Added to cart:", product);
+    setCartItems((prevItems) => {
+      const newCartItems = prevItems.slice();
+      const newItem = {
+        id: product.id,
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        cartItemId: new Date().getTime(),
+      };
+  
+      newCartItems.push(newItem);
+      return newCartItems;
+    });
   };
+  
 
   return (
     <div className="landing-page">
@@ -84,7 +96,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ cartItems, setCartItems }) =>
       </section>
     </div>
   );
-};
+}
 
 interface Testimonial {
   id: number;
@@ -95,21 +107,20 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: 'Ian U.',
-    message: 'The best skincare products I have ever seen!',
+    name: "Ian U.",
+    message: "The best skincare products I have ever seen!",
   },
   {
     id: 2,
-    name: 'Tyler Y.',
-    message: 'Fantastic quality and amazing customer service.',
+    name: "Tyler Y.",
+    message: "Fantastic quality and amazing customer service.",
   },
   {
     id: 3,
-    name: 'Kaelem B.',
+    name: "Kaelem B.",
     message: "I love how the stylists are always taking a client's input",
   },
 ];
-
 
 const featuredProducts: Product[] = [
   {

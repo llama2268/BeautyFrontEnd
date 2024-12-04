@@ -1,7 +1,6 @@
 import './BookingPage.css';
 import React, { useState, useEffect } from 'react';
 
-
 type User = {
   id: number;
   profession: string;
@@ -12,10 +11,10 @@ type User = {
   contact: string;
 };
 
-const BookingPage: React.FC = () => {
+const BookingPage = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
-  const [filters, setFilters] = useState({ profession: '', hairType: '', price: 0 });
+  const [filters, setFilters] = useState({ profession: "", hairType: "", price: 0 });
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
   useEffect(() => {
@@ -31,8 +30,28 @@ const BookingPage: React.FC = () => {
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFilters({ ...filters, [name]: value });
+  
+    setFilters((prevFilters) => {
+      
+      const newFilters = {
+        profession: prevFilters.profession,
+        hairType: prevFilters.hairType,
+        price: prevFilters.price,
+      };
+  
+      if (name === "price") {
+        newFilters.price = Number(value);
+      } else if (name === "profession") {
+        newFilters.profession = value;
+      } else if (name === "hairType") {
+        newFilters.hairType = value;
+      }
+  
+      return newFilters;
+    });
   };
+  
+  
 
   const applyFilters = () => {
     let filtered = users;
